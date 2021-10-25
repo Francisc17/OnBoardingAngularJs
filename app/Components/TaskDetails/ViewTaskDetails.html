@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">OnBoarding Exercise</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#!/login">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/register">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<body>
+
+<div class="container">
+    <h1>Task Details</h1>
+    <div class="infoPresentation mt-5">
+        <p><b>Name:</b> {{taskDetails.taskName}}</p>
+        <p><b>State:</b> {{taskDetails.state}}</p>
+        <p><b>Deadline:</b> {{taskDetails.deadline}}</p>
+        <p><b>Project:</b> {{taskDetails.projectName}}</p>
+        <div class="infoResponsible mt-5">
+            <h5>Responsible</h5>
+            <div class="row">
+                <div class="col-2">
+                    <img class="img-thumbnail" src="https://images.squarespace-cdn.com/content/v1/5d294b45e25e4900019ce453/1571148279710-AKZR9EDMIZKWLDISSXRA/avatar.png" alt="avatar">
+                </div>
+                <div class="col mt-4">
+                    <p><b>Username: </b>{{taskDetails.responsible.userName}}</p>
+                    <p><b>Full Name: </b>{{taskDetails.responsible.fullName}}</p>
+                    <p><b>Email: </b>{{taskDetails.responsible.email}}</p>
+                    <p><b>Join Date: </b>{{taskDetails.responsible.joinDate}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

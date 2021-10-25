@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">OnBoarding Exercise</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#!/login">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/register">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<body>
+<div class="container">
+    <h1>Add Project</h1>
+    <form>
+        <div>
+            <label for="tName">Name</label>
+            <input type="text" class="form-control" id="tName" placeholder="Task name" ng-model="taskName">
+        </div>
+        <div>
+            <label for="deadline">Deadline</label>
+            <input type="date" class="form-control" id="deadline" placeholder="Deadline" ng-model="deadline">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect2">Responsible</label>
+            <select name="users" ng-model="selectedValue" class="form-control" id="exampleFormControlSelect2">
+                <option ng-repeat="prog in programmers" value="{{prog.id}}">{{prog.userName}}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3" ng-click="onSubmitTask({
+        'taskName': taskName,
+        'deadline': deadline,
+        'state': 1,
+        'TaskResponsibleId': selectedValue
+        })">Guardar</button>
+    </form>
+</div>

@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">OnBoarding Exercise</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#!/login">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/register">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<body>
+
+<div class="container">
+    <h1>Project Details</h1>
+    <div class="mt-4">
+        <h5>Name: {{projectDetails.projectName}}</h5>
+        <h5>budget: {{projectDetails.budget}}</h5>
+    </div>
+    <div class="mt-5" ng-if="projectDetails.tasks != null && projectDetails.tasks.length > 0">
+        <h3>Tasks</h3>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">State</th>
+                <th scope="col">Deadline</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="task in projectDetails.tasks" ng-click="clickRow(task.id)">
+                <div class="row">
+                    <td class="col-4">{{task.taskName}}</td>
+                    <td class="col-4">{{task.state}}</td>
+                    <td class="col-4">{{task.deadline}}</td>
+                </div>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <button type="button" class="btn btn-primary mt-3" ng-click="addTask()">Add Task</button>
+    </div>
+</div>
