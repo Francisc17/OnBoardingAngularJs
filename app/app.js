@@ -18,6 +18,18 @@ angular.module('myApp', [
   'angular-jwt',
   'swxLocalStorage'
 ])
+    .factory('httpResponseInterceptor', ['$q', '$rootScope', '$location', function($q, $rootScope, $location) {
+      return {
+        responseError: function(rejection) {
+          if (rejection.status === 401) {
+            // Something like below:
+            $location.path('/login');
+          }
+          return $q.reject(rejection);
+        }
+      };
+    }])
+
     .config(['$locationProvider', '$routeProvider','jwtOptionsProvider','$httpProvider',
       function($locationProvider, $routeProvider, jwtOptionsProvider, $httpProvider) {
 
@@ -31,8 +43,9 @@ angular.module('myApp', [
         });
 
         $httpProvider.interceptors.push('jwtInterceptor');
+        $httpProvider.interceptors.push('httpResponseInterceptor');
 
-  //TODO: why we need this here?
+        //TODO: why we need this here?
   $locationProvider.hashPrefix('!');
 
   //default route!

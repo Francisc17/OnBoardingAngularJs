@@ -1,37 +1,45 @@
 'use strict';
 
-angular.module("myApp.ProjectDetails",[
+angular.module("myApp.ProjectDetails", [
     'ngRoute'
 ])
 
-    .config(['$routeProvider', function($routeProvider) {
+    .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/projects/:id', {
             templateUrl: 'Components/ProjectDetails/ViewProjectDetails.html',
             controller: 'ViewProjectDetailsCtrl'
         });
     }])
 
-.controller('ViewProjectDetailsCtrl',["$scope",'$localStorage','apiProjectsCalls',"$routeParams","$location",
-    function ($scope,$localStorage,apiProjectsCalls,$routeParams,$location){
-    var onSuccess = function (data){
-        console.log(data);
-        $scope.projectDetails = data;
-    }
+    .controller('ViewProjectDetailsCtrl', ["$scope", '$localStorage', 'apiProjectsCalls', "$routeParams", "$location",
+        function ($scope, $localStorage, apiProjectsCalls, $routeParams, $location) {
+            var onSuccess = function (data) {
+                console.log(data);
+                $scope.projectDetails = data;
+            }
 
-    var onError = function (reason){
-        $scope.error = reason;
-    }
+            var onError = function (reason) {
+                $scope.error = reason;
+            }
 
-    var pId = $routeParams.id;
+            var pId = $routeParams.id;
 
-    apiProjectsCalls.getProjectDetails(pId).then(onSuccess,onError);
+            apiProjectsCalls.getProjectDetails(pId).then(onSuccess, onError);
 
-    $scope.clickRow = function (id){
-        $location.path('/tasks/'+ id);
-    }
+            $scope.rmProj = function (id) {
+                apiProjectsCalls.removeProject(id).then(function () {
+                    $location.path('/projects')
+                }, function () {
+                    $scope.errorProject = "Algo de errado aconteceu ao remover projeto";
+                })
+            }
 
-    $scope.addTask = function (){
-        $location.path('/projects/'+ pId +'/addTask');
-    }
+            $scope.clickRow = function (id) {
+                $location.path('/tasks/' + id);
+            }
 
-}]);
+            $scope.addTask = function () {
+                $location.path('/projects/' + pId + '/addTask');
+            }
+
+        }]);

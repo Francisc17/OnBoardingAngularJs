@@ -27,6 +27,9 @@ angular.module("myApp.Login", [
 
     $scope.loggedIn = false;
 
+    if ($localStorage.get('token') != null)
+        $localStorage.remove('token');
+
     var onLoginComplete = function (data){
         //Put token in the localStorage.
         var expToken = data['access_token'];
@@ -46,7 +49,7 @@ angular.module("myApp.Login", [
     };
 
     var onError = function (reason){
-        $scope.error = "Username or Password incorrect!";
+        $scope.errorLogin = "Username or Password incorrect!";
     };
 
     $scope.submit = function (username, password){

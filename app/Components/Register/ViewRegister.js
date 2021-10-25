@@ -13,12 +13,6 @@ angular.module("myApp.Register", ['ngRoute'])
 .controller('ViewRegisterCtrl', ["$scope",'apiUserCalls',"$location",function($scope,apiUserCalls,$location) {
 
     var onRegisterComplete = function (data){
-
-        //maybe redirect user to the home page already?
-
-        console.log($scope.user);
-        //redirect to respective window!
-        console.log("Success register");
         $location.path('/login');
     };
 

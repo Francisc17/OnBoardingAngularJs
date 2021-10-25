@@ -31,11 +31,21 @@ angular.module("apiProjectsCalls",['ngRoute'])
             }).then(function (response){
                 return response.data;
             })
-        }
+        };
+
+        var removeProject = function (idProject){
+            return $http({
+                url: baseURL + "/api/projects/" + idProject,
+                method: 'DELETE',
+            }).then(function (response){
+                return response.data;
+            })
+        };
 
         return {
             getUserProjects: getUserProjects,
             getProjectDetails: getProjectDetails,
-            createProject: createProject
+            createProject: createProject,
+            removeProject: removeProject
         };
     });

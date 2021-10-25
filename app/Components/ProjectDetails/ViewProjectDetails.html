@@ -19,10 +19,14 @@
 <body>
 
 <div class="container">
-    <h1>Project Details</h1>
+     <h1>Project Details</h1>
     <div class="mt-4">
         <h5>Name: {{projectDetails.projectName}}</h5>
         <h5>budget: {{projectDetails.budget}}</h5>
+    </div>
+    <div class="col-4 mt-3">
+        <button type="button" class="btn btn-warning">Edit</button>
+        <button type="button" class="btn btn-danger" ng-click="rmProj(projectDetails.id)">Remove</button>
     </div>
     <div class="mt-5" ng-if="projectDetails.tasks != null && projectDetails.tasks.length > 0">
         <h3>Tasks</h3>
